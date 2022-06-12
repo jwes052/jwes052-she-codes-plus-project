@@ -1,0 +1,45 @@
+li {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.menu {
+  margin-top: 20px;
+}
+
+.citylist {
+  margin: 0;
+  padding: 0;
+}
+
+.currentDay {
+  font-size: 30px;
+  font-weight: 400;
+  font-style: italic;
+  padding: 0;
+}
+
+#currentCity {
+  font-size: 42px;
+  font-weight: 800;
+  color: #060065;
+}
+
+body {
+  font-family: poppins;
+  color: #666666;
+}
+
+.forecast {
+  text-align: center;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.tempFormat {
+  font-size: 14px;
+  color: blue;
+  position: relative;
+  top: -28px;
+}
