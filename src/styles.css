@@ -45,7 +45,7 @@ body {
 }
 
 .weatherContainer {
-  background-image: url(./src/media/Marblebackgroundimage.jpg);
+  background-image: url("./media/Marblebackgroundimage.jpg");
   border: #666666;
   border-style: solid;
   border-width: 1px;
