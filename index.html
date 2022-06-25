@@ -25,7 +25,7 @@
     <div class="container">
       <div class ="weatherContainer">
         
-      <h1 id="pageTitle">How is the weather?</h1>
+      <h1 id="pageTitle">What is the weather like in......?</h1>
 
       <div class="row rowSearch">
    <!--   <form id="currentLocation"> --> 
@@ -80,7 +80,9 @@
            <li id="currentTemp">
           
             <span id="currentTempValue"></span>
-            <a href="#" class="tempFormat" id="celsius">°C</a> <a href="#" class="tempFormat" id="fahrenheit">°F</a>
+            <span class="tempFormat">
+              <a href="#" class="active" id="celsius">°C</a> <a href="#"  id="fahrenheit">°F</a>            
+            </span>
            </li>
             
 
@@ -91,7 +93,8 @@
   <li>Wind: <span id="currentWind" ></span> km/h</li>
   <li >Humidity: <span id="currentHumidity" ></span>%</li>
   <li>
-<i id="weatherIcon" class="fa-solid fa-cloud-sun-rain"></i>
+  <!--<i id="weatherIcon"></i>-->
+  <img src="" alt="Clear" id="weatherIcon" class="float-left" />
   </li>
    </ul>
  </Div>

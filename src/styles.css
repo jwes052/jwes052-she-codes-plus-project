@@ -8,6 +8,13 @@ li {
   margin-top: 20px;
 }
 
+h1 {
+  color: gold;
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .citylist {
   margin: 0;
   padding: 0;
@@ -53,10 +60,21 @@ body {
 
 .tempFormat {
   font-size: 14px;
-  color: blue;
+  color: cyan;
   position: relative;
-  top: -28px;
+  top: -15px;
 }
+
+.tempFormat .active {
+  cursor: default;
+  color: gold;
+  text-decoration: none;
+}
+
+.tempFormat .active:hover {
+  cursor: default;
+}
+
 .container {
   display: block;
   align-self: center;
@@ -107,5 +125,6 @@ li::first-letter {
 }
 
 #weatherIcon {
-  size: 60px;
+  background-color: black;
+  border-radius: 50px;
 }

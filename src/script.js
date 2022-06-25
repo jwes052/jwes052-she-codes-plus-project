@@ -105,7 +105,7 @@ function convertDateTime(timestamp) {
 }
 
 function updateCity(event) {
-  event.preventDefault();
+  //event.preventDefault();
   let city = document.querySelector("#searchCityInput").value;
   let apiKey = "e4a1a55cec92d0a62ad315df687956af";
   let unit = "metric";
@@ -116,12 +116,18 @@ function updateCity(event) {
 
 function updateCelsius(event) {
   event.preventDefault();
-  currentTempValue.innerHTML = 19;
+  currentTempValue.innerHTML = celsiusTemp;
+  celsiusElement.classList.add("active");
+  fahrenheitElement.classList.remove("active");
 }
 
 function updateFahrenheit(event) {
   event.preventDefault();
-  currentTempValue.innerHTML = 66;
+  celsiusElement.classList.remove("active");
+  fahrenheitElement.classList.add("active");
+  let tempAmount = celsiusTemp; //sets the temp to celsius
+  let fahrenheitNumber = Math.round((parseInt(tempAmount) * 9) / 5 + 32);
+  currentTempValue.innerHTML = fahrenheitNumber;
 }
 
 function showTemp(response) {
@@ -131,21 +137,25 @@ function showTemp(response) {
   let humidityElement = document.querySelector("#currentHumidity");
   let weatherDescriptionElement = document.querySelector("#weatherDescription");
   let countryElement = document.querySelector("#currentCountry");
-
   let timeElement = document.querySelector("#currentTime");
+  let iconElement = document.querySelector("#weatherIcon");
 
   timeElement.innerHTML = convertDateTime(response.data.dt * 1000);
 
-  /*
-  let iconElement = document.querySelector("#weatherIcon");
-  iconElement.innerHTML = response.data.weather.icon;
-*/
+  celsiusTemp = Math.round(response.data.main.temp);
+
   tempElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   countryElement.innerHTML = response.data.sys.country;
   weatherDescriptionElement.innerHTML = response.data.weather[0].description;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   humidityElement.innerHTML = response.data.main.humidity;
+
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function findCurrentCity(position) {
@@ -166,17 +176,9 @@ function btnCurrentLocation() {
 let menuoptions = ["London", "Paris", "Rome", "New York", "Auckland"];
 
 let cityShown = menuoptions[0];
-
-//let now = new Date();
-//let showFullDate = formatDate(now);
-//let showDayTime = formatDayTime(now);
+let celsiusTemp = null;
 
 navigator.geolocation.getCurrentPosition(findCurrentCity);
-
-/*let timeElement = document.querySelector("#currentTime");
-let cityElement = document.querySelector("#currentCity");
-timeElement.innerHTML = showDayTime;
-cityElement.innerHTML = cityShown;*/
 
 let menuOpt1Element = document.querySelector("#menuOption1");
 let menuOpt2Element = document.querySelector("#menuOption2");
@@ -189,6 +191,8 @@ menuOpt2Element.innerHTML = menuoptions[1];
 menuOpt3Element.innerHTML = menuoptions[2];
 menuOpt4Element.innerHTML = menuoptions[3];
 menuOpt5Element.innerHTML = menuoptions[4];
+
+menuOpt1Element.addEventListener("click", updateCity());
 
 /* this needs its own function
 menuOpt1Element.addEventListener("click", updateCityFromMenu);
