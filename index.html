@@ -27,24 +27,24 @@
         
       <h1 id="pageTitle">How is the weather?</h1>
 
-<div class="row rowSearch">
- 
-  <div class="col-8">
-    <input
-        type="text"
-        class="form-control"
-        id="searchCityInput"
-        aria-describedby="searchCity"
-        placeholder ="Search for a city...."
-      />
-  </div>
-  <div class="col-2">
-   <button id="btnSearch" type="submit" class="btn btn-primary">Search</button>
-  </div>
-  <div class="col-1">
-     <button id="btnCurrentLocation" type="submit" >📍</button>
-  </div>
-</div>
+      <div class="row rowSearch">
+        <div class="col-md-1">
+          <button id="btnCurrentLocation" type="submit" >📍</button>
+        </div>
+        <div class="col-md-8">
+          <input
+              type="text"
+              class="form-control"
+              id="searchCityInput"
+              aria-describedby="searchCity"
+              placeholder ="Search for a city...."
+            />
+        </div>
+        <div class="col-md-2">
+        <button id="btnSearch" type="submit" class="btn btn-primary">Search</button>
+        </div>
+
+      </div>
       <div class="row otherOptions">
           <ul class="citylist">
             <li class="cityListItem">
@@ -64,10 +64,9 @@
             </li>
           </ul>
         </div>
-
-      <div class="row menu">
-        <div class="col-9">
-          <ul class="row currentDay">
+ <div class="row currentDay">   
+  <div class=" col-md-8  currentDayDetails1">   
+          <ul>
             <li id="currentCity"></li>
             <li id="currentTime"></li>
            <li id="currentTemp">
@@ -75,8 +74,19 @@
             <span id="currentTempValue"></span>
             <a href="#" class="tempFormat" id="celsius">°C</a> <a href="#" class="tempFormat" id="fahrenheit">°F</a>
            </li>
-           
-          </ul>
+            
+
+           </ul>
+           </div>
+    <Div class="col-md-4 currentDayDetails2">
+<ul>
+  <li>WIND SPEED GOES HERE</li>
+  <li>HUMIDITY GOES HERE</li>
+  </ul>
+ </Div>
+ </div>
+          
+          
           <div class="row forecast">
             <div class="col-md-2">  
               <div class="card" >
@@ -132,11 +142,10 @@
             </div>
 
           </div>
-        </div>  
-      </div>
+      
+      
     </div>
-  <p><a href="https://github.com/jwes052/jwes052-she-codes-plus-project" target="_blank" >Open source code</a> by Jwes052</p>
-  <p>
+  <p><a href="https://github.com/jwes052/jwes052-she-codes-plus-project" target="_blank" >Open source code</a> by Jwes052 </br>
   Background photo by <a href="https://unsplash.com/@rosellastudio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Madison Bracaglia</a> sourced from <a href="https://unsplash.com/images/nature/stone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   </p>
   <script src="src/script.js"></script>

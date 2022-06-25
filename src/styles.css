@@ -21,6 +21,11 @@ li {
   display: inline;
   min-width: 200px;
 }
+.cityListItem:hover {
+  background-color: rgb(151, 205, 244);
+  transition: all 200ms ease-in-out;
+  border-radius: 5px;
+}
 
 .currentDay {
   font-size: 30px;
@@ -38,6 +43,7 @@ li {
 body {
   font-family: poppins;
   color: #666666;
+  text-align: centre;
 }
 
 .forecast {
@@ -53,7 +59,9 @@ body {
   top: -28px;
 }
 .container {
-  margin: 10px;
+  display: block;
+  align-self: center;
+  text-align: center;
 }
 
 .row {
@@ -63,8 +71,6 @@ body {
 .weatherContainer {
   background-image: url("./media/Marblebackgroundimage.jpg");
   border: transparent;
-  border-style: solid;
-  border-width: 1px;
   border-radius: 25px;
 }
 
@@ -81,4 +87,8 @@ body {
 
 .rowSearch {
   align-items: center;
+}
+
+.card:hover {
+  background-color: rgb(151, 205, 244);
 }
