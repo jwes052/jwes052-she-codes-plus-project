@@ -3,7 +3,7 @@ function convertDateTime(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  let day = date.getDay();
+  let day = date.getDate();
   let year = date.getFullYear();
 
   let zeroMin = "";
