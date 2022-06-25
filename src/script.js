@@ -1,66 +1,3 @@
-/*
-//these functions have been combined as convertDateTime
-function formatDate(Date) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tueday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let weekday = days[Date.getDay()];
-
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  let month = months[Date.getMonth()];
-
-  let day = Date.getDate();
-  let year = Date.getFullYear();
-
-  return `${weekday}, ${month} ${day}, ${year}`;
-}
-
-function formatDayTime(Date) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tueday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let weekday = days[Date.getDay()];
-  let minutes = now.getMinutes();
-
-  let zeroMin = "";
-
-  if (minutes < 10) {
-    zeroMin = 0;
-  }
-
-  let hours = now.getHours();
-
-  return `${weekday} ${hours}:${zeroMin}${minutes}`;
-}
-
-*/
-
 function convertDateTime(timestamp) {
   //Calculate the date and time based on API Weather data
   let date = new Date(timestamp);
@@ -107,13 +44,75 @@ function convertDateTime(timestamp) {
 function updateCity(event) {
   //event.preventDefault();
   let city = document.querySelector("#searchCityInput").value;
-  let apiKey = "e4a1a55cec92d0a62ad315df687956af";
-  let unit = "metric";
+  //  let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  //  let unit = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
   console.log(apiURL);
   axios.get(apiURL).then(showTemp);
 }
 
+//this function deals with if the option of list of cities is clicked
+//option 1
+function updateCityFromMenu1(event) {
+  event.preventDefault();
+  let city = document.querySelector("#menuOption1").innerHTML;
+  console.log(city);
+  // let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  // let unit = "metric";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemp);
+}
+
+//option 2
+function updateCityFromMenu2(event) {
+  event.preventDefault();
+  let city = document.querySelector("#menuOption2").innerHTML;
+  console.log(city);
+  // let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  // let unit = "metric";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemp);
+}
+
+//option 3
+function updateCityFromMenu3(event) {
+  event.preventDefault();
+  let city = document.querySelector("#menuOption3").innerHTML;
+  console.log(city);
+  // let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  // let unit = "metric";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemp);
+}
+
+//option 4
+function updateCityFromMenu4(event) {
+  event.preventDefault();
+  let city = document.querySelector("#menuOption4").innerHTML;
+  console.log(city);
+  // let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  // let unit = "metric";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemp);
+}
+
+//option 5
+function updateCityFromMenu5(event) {
+  event.preventDefault();
+  let city = document.querySelector("#menuOption5").innerHTML;
+  console.log(city);
+  // let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  // let unit = "metric";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemp);
+}
+
+//this dunction converts the temp to celsius
 function updateCelsius(event) {
   event.preventDefault();
   currentTempValue.innerHTML = celsiusTemp;
@@ -121,6 +120,7 @@ function updateCelsius(event) {
   fahrenheitElement.classList.remove("active");
 }
 
+//this dunction converts the temp to Fahrenheit
 function updateFahrenheit(event) {
   event.preventDefault();
   celsiusElement.classList.remove("active");
@@ -161,24 +161,24 @@ function showTemp(response) {
 function findCurrentCity(position) {
   let varLat = position.coords.latitude;
   let varLon = position.coords.longitude;
-  let apiKey = "e4a1a55cec92d0a62ad315df687956af";
-  let unit = "metric";
+  // let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+  //let unit = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${varLat}&lon=${varLon}&units=${unit}&appid=${apiKey}`;
 
   axios.get(apiURL).then(showTemp);
-  /*console.log(apiURL);*/
 }
 
 function btnCurrentLocation() {
   navigator.geolocation.getCurrentPosition(findCurrentCity);
 }
 
+//define global variables
+let apiKey = "e4a1a55cec92d0a62ad315df687956af";
+let unit = "metric";
+
 let menuoptions = ["London", "Paris", "Rome", "New York", "Auckland"];
-
-let cityShown = menuoptions[0];
+//let cityShown = "Wellington";
 let celsiusTemp = null;
-
-navigator.geolocation.getCurrentPosition(findCurrentCity);
 
 let menuOpt1Element = document.querySelector("#menuOption1");
 let menuOpt2Element = document.querySelector("#menuOption2");
@@ -192,16 +192,11 @@ menuOpt3Element.innerHTML = menuoptions[2];
 menuOpt4Element.innerHTML = menuoptions[3];
 menuOpt5Element.innerHTML = menuoptions[4];
 
-menuOpt1Element.addEventListener("click", updateCity());
-
-/* this needs its own function
-menuOpt1Element.addEventListener("click", updateCityFromMenu);
-menuOpt2Element.addEventListener("click", updateCityFromMenu);
-menuOpt3Element.addEventListener("click", updateCityFromMenu);
-menuOpt4Element.addEventListener("click", updateCityFromMenu);
-menuOpt5Element.addEventListener("click", updateCityFromMenu);
-
-*/
+menuOpt1Element.addEventListener("click", updateCityFromMenu1);
+menuOpt2Element.addEventListener("click", updateCityFromMenu2);
+menuOpt3Element.addEventListener("click", updateCityFromMenu3);
+menuOpt4Element.addEventListener("click", updateCityFromMenu4);
+menuOpt5Element.addEventListener("click", updateCityFromMenu5);
 
 let searchElement = document.querySelector("#searchForm");
 searchElement.addEventListener("submit", updateCity);
@@ -214,41 +209,9 @@ celsiusElement.addEventListener("click", updateCelsius);
 let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", updateFahrenheit);
 
-let apiKey = "e4a1a55cec92d0a62ad315df687956af";
-
-let unit = "metric";
-/*let city = "Wellington";*/
-
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityShown}&units=${unit}&appid=${apiKey}`;
+//let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityShown}&units=${unit}&appid=${apiKey}`;
 
 let btnCurrentCityElement = document.querySelector("#btnCurrentLocation");
 btnCurrentCityElement.addEventListener("click", btnCurrentLocation);
 
-/*  -- this is old code which can be deleted later on
-
-function handlePosition(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-}
-
-
-
-navigator.geolocation.getCurrentPosition(handlePosition);
-
-
-
-let apiAppID = `&appid=${apiKey}`;
-let weatherAPICurrentRoot =
-  "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={}";
-
-/*let weatherAPICurrentRoot =
-  "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={}";
-
-let weatherAPIGeoLocateRoot =
-  "http://api.openweathermap.org/geo/1.0/direct?q=London,GB&limit=2";
-
-console.log(`${weatherAPIGeoLocateRoot}${apiAppID}`);
-
-axios.get(`${weatherAPIGeoLocateRoot}${apiAppID}`).then(showTemp);
-
-*/
+navigator.geolocation.getCurrentPosition(findCurrentCity);
