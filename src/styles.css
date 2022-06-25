@@ -92,3 +92,7 @@ body {
 .card:hover {
   background-color: rgb(151, 205, 244);
 }
+
+.currentCityList {
+  text-align: left;
+}

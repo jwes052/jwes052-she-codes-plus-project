@@ -28,10 +28,14 @@
       <h1 id="pageTitle">How is the weather?</h1>
 
       <div class="row rowSearch">
+   <!--   <form id="currentLocation"> --> 
         <div class="col-md-1">
-          <button id="btnCurrentLocation" type="submit" >📍</button>
+          <button id="btnCurrentLocation"  >📍</button>
         </div>
+     <!--   </form>--> 
+
         <div class="col-md-8">
+          <form id="searchForm">
           <input
               type="text"
               class="form-control"
@@ -43,7 +47,7 @@
         <div class="col-md-2">
         <button id="btnSearch" type="submit" class="btn btn-primary">Search</button>
         </div>
-
+      </form>
       </div>
       <div class="row otherOptions">
           <ul class="citylist">
@@ -65,8 +69,8 @@
           </ul>
         </div>
  <div class="row currentDay">   
-  <div class=" col-md-8  currentDayDetails1">   
-          <ul>
+  <div class=" col-md-6  currentDayDetails1">   
+          <ul class="currentCityList">
             <li id="currentCity"></li>
             <li id="currentTime"></li>
            <li id="currentTemp">
@@ -79,10 +83,10 @@
            </ul>
            </div>
     <Div class="col-md-4 currentDayDetails2">
-<ul>
-  <li>WIND SPEED GOES HERE</li>
-  <li>HUMIDITY GOES HERE</li>
-  </ul>
+ <ul class="currentCityList">
+  <li>Wind: <span id="currentWind" >s1</span></li>
+  <li >Humidity: <span id="currentHumidity" >s2</span>%</li>
+   </ul>
  </Div>
  </div>
           

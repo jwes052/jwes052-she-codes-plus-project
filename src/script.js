@@ -83,13 +83,18 @@ function updateFahrenheit(event) {
 function showTemp(response) {
   let cityElement = document.querySelector("#currentCity");
   let tempElement = document.querySelector("#currentTempValue");
-  /* --  need to update the icon too -- 
+  let windSpeedElement = document.querySelector("#currentWind");
+  let humidityElement = document.querySelector("#currentHumidity");
+
+  /* --  need to update the icon too -- */
   let iconElement = document.querySelector("#weatherIcon");
   iconElement.innerHTML = response.data.weather.icon;
-  */
 
   tempElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
+
+  windSpeedElement.innerHTML = response.data.wind.speed;
+  humidityElement.innerHTML = response.data.main.humidity;
 }
 
 function findCurrentCity(position) {
