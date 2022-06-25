@@ -1,3 +1,5 @@
+/*
+//these functions have been combined as convertDateTime
 function formatDate(Date) {
   let days = [
     "Sunday",
@@ -57,6 +59,51 @@ function formatDayTime(Date) {
   return `${weekday} ${hours}:${zeroMin}${minutes}`;
 }
 
+*/
+
+function convertDateTime(timestamp) {
+  //Calculate the date and time based on API Weather data
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let day = date.getDay();
+  let year = date.getFullYear();
+
+  let zeroMin = "";
+  if (minutes < 10) {
+    zeroMin = 0;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tueday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekday = days[date.getDay()];
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let month = months[date.getMonth()];
+  return `${weekday}, ${month} ${day}, ${year}   ${hours}:${zeroMin}${minutes}`;
+}
+
 function updateCity(event) {
   event.preventDefault();
   let city = document.querySelector("#searchCityInput").value;
@@ -64,10 +111,7 @@ function updateCity(event) {
   let unit = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
   console.log(apiURL);
-
   axios.get(apiURL).then(showTemp);
-
-  /* cityElement.innerHTML = city;*/
 }
 
 function updateCelsius(event) {
@@ -85,15 +129,22 @@ function showTemp(response) {
   let tempElement = document.querySelector("#currentTempValue");
   let windSpeedElement = document.querySelector("#currentWind");
   let humidityElement = document.querySelector("#currentHumidity");
+  let weatherDescriptionElement = document.querySelector("#weatherDescription");
+  let countryElement = document.querySelector("#currentCountry");
 
-  /* --  need to update the icon too -- */
+  let timeElement = document.querySelector("#currentTime");
+
+  timeElement.innerHTML = convertDateTime(response.data.dt * 1000);
+
+  /*
   let iconElement = document.querySelector("#weatherIcon");
   iconElement.innerHTML = response.data.weather.icon;
-
+*/
   tempElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
-
-  windSpeedElement.innerHTML = response.data.wind.speed;
+  countryElement.innerHTML = response.data.sys.country;
+  weatherDescriptionElement.innerHTML = response.data.weather[0].description;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   humidityElement.innerHTML = response.data.main.humidity;
 }
 
@@ -115,13 +166,17 @@ function btnCurrentLocation() {
 let menuoptions = ["London", "Paris", "Rome", "New York", "Auckland"];
 
 let cityShown = menuoptions[0];
-let now = new Date();
-let showFullDate = formatDate(now);
-let showDayTime = formatDayTime(now);
-let timeElement = document.querySelector("#currentTime");
+
+//let now = new Date();
+//let showFullDate = formatDate(now);
+//let showDayTime = formatDayTime(now);
+
+navigator.geolocation.getCurrentPosition(findCurrentCity);
+
+/*let timeElement = document.querySelector("#currentTime");
 let cityElement = document.querySelector("#currentCity");
 timeElement.innerHTML = showDayTime;
-cityElement.innerHTML = cityShown;
+cityElement.innerHTML = cityShown;*/
 
 let menuOpt1Element = document.querySelector("#menuOption1");
 let menuOpt2Element = document.querySelector("#menuOption2");

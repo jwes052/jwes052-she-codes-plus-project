@@ -28,16 +28,15 @@ li {
 }
 
 .currentDay {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 400;
   font-style: italic;
   padding: 0;
 }
 
-#currentCity {
+.cityCountry {
   font-size: 42px;
   font-weight: 800;
-  color: #060065;
 }
 
 body {
@@ -69,7 +68,8 @@ body {
 }
 
 .weatherContainer {
-  background-image: url("./media/Marblebackgroundimage.jpg");
+  /*background-image: url("./media/Marblebackgroundimage.jpg");*/
+  background-image: url("./media/RainbowLeaves.jpg");
   border: transparent;
   border-radius: 25px;
 }
@@ -95,4 +95,17 @@ body {
 
 .currentCityList {
   text-align: left;
+  color: gold;
+}
+
+#weatherDescription {
+  text-transform: capitalize;
+}
+
+li::first-letter {
+  text-transform: uppercase;
+}
+
+#weatherIcon {
+  size: 60px;
 }

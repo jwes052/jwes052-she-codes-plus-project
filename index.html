@@ -69,12 +69,16 @@
           </ul>
         </div>
  <div class="row currentDay">   
-  <div class=" col-md-6  currentDayDetails1">   
+  <div class=" col-md-7  currentDayDetails1">   
           <ul class="currentCityList">
-            <li id="currentCity"></li>
-            <li id="currentTime"></li>
+            <li class="cityCountry">
+              <span id="currentCity"></span>, 
+              <span id="currentCountry"></span>
+            </li>
+            <li>Last updated: <span  id="currentTime"></span></li>
+            <li id="weatherDescription"></li>
            <li id="currentTemp">
-              <i id="weatherIcon" class="fa-solid fa-cloud-sun-rain"></i>
+          
             <span id="currentTempValue"></span>
             <a href="#" class="tempFormat" id="celsius">°C</a> <a href="#" class="tempFormat" id="fahrenheit">°F</a>
            </li>
@@ -82,10 +86,13 @@
 
            </ul>
            </div>
-    <Div class="col-md-4 currentDayDetails2">
+    <Div class="col-md-3 currentDayDetails2">
  <ul class="currentCityList">
-  <li>Wind: <span id="currentWind" >s1</span></li>
-  <li >Humidity: <span id="currentHumidity" >s2</span>%</li>
+  <li>Wind: <span id="currentWind" ></span> km/h</li>
+  <li >Humidity: <span id="currentHumidity" ></span>%</li>
+  <li>
+<i id="weatherIcon" class="fa-solid fa-cloud-sun-rain"></i>
+  </li>
    </ul>
  </Div>
  </div>
@@ -150,7 +157,7 @@
       
     </div>
   <p><a href="https://github.com/jwes052/jwes052-she-codes-plus-project" target="_blank" >Open source code</a> by Jwes052 </br>
-  Background photo by <a href="https://unsplash.com/@rosellastudio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Madison Bracaglia</a> sourced from <a href="https://unsplash.com/images/nature/stone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    Background photo by <a href="https://unsplash.com/es/@chinnu_indrakumar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chinnu Indrakumar</a> on <a href="https://unsplash.com/s/photos/leaves?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   </p>
   <script src="src/script.js"></script>
   </body>
