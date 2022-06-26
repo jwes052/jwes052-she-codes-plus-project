@@ -17,150 +17,166 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://kit.fontawesome.com/a0297db745.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a0297db745.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
     <div class="container">
-      <div class ="weatherContainer">
-        
-      <h1 id="pageTitle">What is the weather like in......?</h1>
+      <div class="weatherContainer">
+        <h1 id="pageTitle">What is the weather like in......?</h1>
 
-      <div class="row rowSearch">
-   <!--   <form id="currentLocation"> --> 
-        <div class="col-md-1">
-          <button id="btnCurrentLocation"  >📍</button>
-        </div>
-     <!--   </form>--> 
+        <form id="searchForm">
+          <div class="row rowSearch">
+            <!--   <form id="currentLocation"> -->
+            <div class="col-md-1">
+              <button id="btnCurrentLocation" type="button">📍</button>
+            </div>
+            <!--   </form>-->
 
-        <div class="col-md-8">
-          <form id="searchForm">
-          <input
-              type="text"
-              class="form-control"
-              id="searchCityInput"
-              aria-describedby="searchCity"
-              placeholder ="Search for a city...."
-            />
-        </div>
-        <div class="col-md-2">
-        <button id="btnSearch" type="submit" class="btn btn-primary">Search</button>
-        </div>
-      </form>
-      </div>
-      <div class="row otherOptions">
+            <div class="col-md-8">
+              <input
+                type="text"
+                class="form-control"
+                id="searchCityInput"
+                aria-describedby="searchCity"
+                placeholder="Search for a city...."
+              />
+            </div>
+            <div class="col-md-2">
+              <button id="btnSearch" type="submit" class="btn btn-primary">
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="row otherOptions">
           <ul class="citylist">
             <li class="cityListItem">
               <a href="#" id="menuOption1">London</a>
             </li>
-           <li class="cityListItem">
+            <li class="cityListItem">
               <a href="#" id="menuOption2">London</a>
             </li>
-             <li class="cityListItem">
+            <li class="cityListItem">
               <a href="#" id="menuOption3">London</a>
             </li>
             <li class="cityListItem">
               <a href="#" id="menuOption4">London</a>
             </li>
-             <li class="cityListItem">
+            <li class="cityListItem">
               <a href="#" id="menuOption5">London</a>
             </li>
           </ul>
         </div>
- <div class="row currentDay">   
-  <div class=" col-md-7  currentDayDetails1">   
-          <ul class="currentCityList">
-            <li class="cityCountry">
-              <span id="currentCity"></span>, 
-              <span id="currentCountry"></span>
-            </li>
-            <li>Last updated: <span  id="currentTime"></span></li>
-            <li id="weatherDescription"></li>
-           <li id="currentTemp">
-          
-            <span id="currentTempValue"></span>
-            <span class="tempFormat">
-              <a href="#" class="active" id="celsius">°C</a> <a href="#"  id="fahrenheit">°F</a>            
-            </span>
-           </li>
-          
-           </ul>
-           </div>
-    <Div class="col-md-3 currentDayDetails2">
- <ul class="currentCityList">
-  <li>Wind: <span id="currentWind" ></span> km/h</li>
-  <li >Humidity: <span id="currentHumidity" ></span>%</li>
-  <li>
-  <!--<i id="weatherIcon"></i>-->
-  <img src="" alt="Clear" id="weatherIcon" class="float-left" />
-  </li>
-   </ul>
- </Div>
- </div>
-          
-          
-          <div class="row forecast">
-            <div class="col-md-2">  
-              <div class="card" >
-                  <div class="card-body">
-                    <h5 class="card-title">Mon</h5>
-                  <i class="fa-solid fa-cloud"></i>
-                  </div>
-              </div>
-            </div>
-
-            <div class="col-md-2">
-              <div class="card" >
-                  <div class="card-body">
-                    <h5 class="card-title">Tues</h5>
-                    <i class="fa-solid fa-cloud-sun"></i>
-                  </div>
-              </div>
-            </div>
-
-            <div class="col-md-2">
-              <div class="card" >
-                <div class="card-body">
-                  <h5 class="card-title">Wed</h5>
-                  <i class="fa-solid fa-cloud-sun-rain"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2">
-              <div class="card" >
-                <div class="card-body">
-                  <h5 class="card-title">Thur</h5>
-                  <i class="fa-solid fa-cloud"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-2">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Fri</h5>
-                  <i class="fa-regular fa-sun"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-2">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Sat</h5>
-                  <i class="fa-regular fa-sun"></i>
-                </div>
-              </div>
-            </div>
-
+        <div class="row currentDay">
+          <div class="col-md-7 currentDayDetails1">
+            <ul class="currentCityList">
+              <li class="cityCountry">
+                <span id="currentCity"></span>,
+                <span id="currentCountry"></span>
+              </li>
+              <li>Last updated: <span id="currentTime"></span></li>
+              <li id="weatherDescription"></li>
+              <li id="currentTemp">
+                <span id="currentTempValue"></span>
+                <span class="tempFormat">
+                  <a href="#" class="active" id="celsius">°C</a>
+                  <a href="#" id="fahrenheit">°F</a>
+                </span>
+              </li>
+            </ul>
           </div>
-      
-      
+          <div class="col-md-3 currentDayDetails2">
+            <ul class="currentCityList">
+              <li>Wind: <span id="currentWind"></span> km/h</li>
+              <li>Humidity: <span id="currentHumidity"></span>%</li>
+              <li>
+                <!--<i id="weatherIcon"></i>-->
+                <img src="" alt="Clear" id="weatherIcon" class="float-left" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row forecast">
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Mon</h5>
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Tues</h5>
+                <i class="fa-solid fa-cloud-sun"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Wed</h5>
+                <i class="fa-solid fa-cloud-sun-rain"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Thur</h5>
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Fri</h5>
+                <i class="fa-regular fa-sun"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sat</h5>
+                <i class="fa-regular fa-sun"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a
+          href="https://github.com/jwes052/jwes052-she-codes-plus-project"
+          target="_blank"
+          >Open source code</a
+        >
+        by Jwes052 <br />
+        Background photo by
+        <a
+          href="https://unsplash.com/es/@chinnu_indrakumar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Chinnu Indrakumar</a
+        >
+        on
+        <a
+          href="https://unsplash.com/s/photos/leaves?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Unsplash</a
+        >
+      </p>
     </div>
-  <p><a href="https://github.com/jwes052/jwes052-she-codes-plus-project" target="_blank" >Open source code</a> by Jwes052 </br>
-    Background photo by <a href="https://unsplash.com/es/@chinnu_indrakumar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chinnu Indrakumar</a> on <a href="https://unsplash.com/s/photos/leaves?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  </p>
-  <script src="src/script.js"></script>
+    <script src="src/script.js"></script>
   </body>
 </html>

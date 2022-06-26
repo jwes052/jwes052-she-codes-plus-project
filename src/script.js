@@ -42,7 +42,7 @@ function convertDateTime(timestamp) {
 }
 
 function updateCity(event) {
-  //event.preventDefault();
+  event.preventDefault();
   let city = document.querySelector("#searchCityInput").value;
   //  let apiKey = "e4a1a55cec92d0a62ad315df687956af";
   //  let unit = "metric";
