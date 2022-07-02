@@ -50,6 +50,12 @@ body {
   font-family: poppins;
   color: #666666;
   text-align: centre;
+  background: linear-gradient(
+    90deg,
+    rgba(63, 43, 150, 1) 33%,
+    rgba(36, 4, 96, 1) 60%,
+    rgba(5, 1, 13, 1) 89%
+  );
 }
 
 .forecast {
@@ -87,9 +93,11 @@ body {
 
 .weatherContainer {
   /*background-image: url("./media/Marblebackgroundimage.jpg");*/
-  background-image: url("./media/RainbowLeaves.jpg");
+  background-image: url("./media/RainbowLeavesRotate.jpg");
   border: transparent;
   border-radius: 25px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 #btnCurrentLocation {
