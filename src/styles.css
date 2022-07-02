@@ -107,8 +107,9 @@ body {
   align-items: center;
 }
 
-.card:hover {
+.forecastDay:hover {
   background-color: rgb(151, 205, 244);
+  color: #666666;
 }
 
 .currentCityList {
@@ -129,7 +130,12 @@ li::first-letter {
   border-radius: 50px;
 }
 
-/*this is the class for the day in the forecast*/
 .forecastDay {
-  color: red; /*using red for testing only*/
+  margin: 14px;
+  border-radius: 25px;
+  color: gold;
+}
+#forecast {
+  align-items: center;
+  padding: 0px;
 }

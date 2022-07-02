@@ -41,6 +41,41 @@ function convertDateTime(timestamp) {
   return `${weekday}, ${month} ${day}, ${year}   ${hours}:${zeroMin}${minutes}`;
 }
 
+function convertDateTimeDay(timestamp) {
+  //Calculate the date and time based on API Weather data
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let day = date.getDate();
+  let year = date.getFullYear();
+
+  let zeroMin = "";
+  if (minutes < 10) {
+    zeroMin = 0;
+  }
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let weekday = days[date.getDay()];
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let month = months[date.getMonth()];
+  return `${weekday}`;
+}
+
 function updateCity(event) {
   event.preventDefault();
   let city = document.querySelector("#searchCityInput").value;
@@ -156,6 +191,8 @@ function showTemp(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecastDetails(response.data.coord);
 }
 
 function findCurrentCity(position) {
@@ -172,36 +209,56 @@ function btnCurrentLocation() {
   navigator.geolocation.getCurrentPosition(findCurrentCity);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
 
-  let forecastDays = ["Mon", "Tues", "Wed"];
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-          <div class="col-md-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title forecastDay" id="forecastDay">${day}</h5>
+  let forecastDays = response.data.daily;
+  console.log(forecastDays);
+
+  forecastDays.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+          <div class="col-md-2 forecastDay">
+                <h6 id="forecastDay">${convertDateTimeDay(
+                  forecastDay.dt * 1000
+                )}</h6>
                 <img
-                  src=""
-                  alt="Clear"
+                  src="https://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
+                  alt="${forecastDay.weather.description}"
                   id="weatherIconForecast"
+                width="50"
                   class="float-left"
                 />
-                <i class="fa-solid fa-cloud"></i>
-                <span class="high" id="forecastDayHigh">h</span>
-                <span class="low" id="forecastDayLow">l</span>
-              </div>
-            </div>
+                </br>
+                <span class="high" id="forecastDayHigh">${Math.round(
+                  forecastDay.temp.max
+                )}°</span>
+                <span class="low" id="forecastDayLow">${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
+
           </div>
           `;
+    }
   });
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecastDetails(coordinates) {
+  //console.log(coordinates);
+  let apiURLForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${unit}&appid=${apiKey}`;
+  console.log(apiURLForecast);
+  axios.get(apiURLForecast).then(displayForecast);
 }
 
 //define global variables
@@ -241,11 +298,9 @@ celsiusElement.addEventListener("click", updateCelsius);
 let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", updateFahrenheit);
 
-//let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityShown}&units=${unit}&appid=${apiKey}`;
-
 let btnCurrentCityElement = document.querySelector("#btnCurrentLocation");
 btnCurrentCityElement.addEventListener("click", btnCurrentLocation);
 
 navigator.geolocation.getCurrentPosition(findCurrentCity);
 
-displayForecast();
+//displayForecast();
