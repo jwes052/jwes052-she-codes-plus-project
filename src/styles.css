@@ -128,3 +128,8 @@ li::first-letter {
   background-color: black;
   border-radius: 50px;
 }
+
+/*this is the class for the day in the forecast*/
+.forecastDay {
+  color: red; /*using red for testing only*/
+}

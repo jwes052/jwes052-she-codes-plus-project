@@ -172,6 +172,38 @@ function btnCurrentLocation() {
   navigator.geolocation.getCurrentPosition(findCurrentCity);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  let forecastDays = ["Mon", "Tues", "Wed"];
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-md-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title forecastDay" id="forecastDay">${day}</h5>
+                <img
+                  src=""
+                  alt="Clear"
+                  id="weatherIconForecast"
+                  class="float-left"
+                />
+                <i class="fa-solid fa-cloud"></i>
+                <span class="high" id="forecastDayHigh">h</span>
+                <span class="low" id="forecastDayLow">l</span>
+              </div>
+            </div>
+          </div>
+          `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //define global variables
 let apiKey = "e4a1a55cec92d0a62ad315df687956af";
 let unit = "metric";
@@ -215,3 +247,5 @@ let btnCurrentCityElement = document.querySelector("#btnCurrentLocation");
 btnCurrentCityElement.addEventListener("click", btnCurrentLocation);
 
 navigator.geolocation.getCurrentPosition(findCurrentCity);
+
+displayForecast();
